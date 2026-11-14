@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deriv TalentPulse — Candidate Application Status</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Deriv-Inspired Top Fintech Bar -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">
+        <div class="brand-mark">d</div>
+        <div class="brand-name">
+          <span>deriv</span>
+          <span style="opacity: 0.45; font-weight: 400;">/</span>
+          <span style="font-weight: 500;">TalentPulse</span>
+          <span class="brand-badge">Zero-Ghosting SLA</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <div class="sla-pill">
+          <span class="pulse-dot"></span>
+          <span>5-Day Stage Response Guarantee</span>
+        </div>
+        <button id="theme-toggle" class="icon-btn" type="button">Dark Mode</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Instant Demo Switcher for Judges & Reviewers -->
+  <section class="demo-bar" aria-label="Demo Scenario Switcher">
+    <div class="demo-bar-inner">
+      <div class="demo-label">
+        <span>Preview Candidate State:</span>
+      </div>
+      <div class="scenario-pills">
+        <button class="scenario-btn active" data-scenario="waiting_review" type="button">
+          1. Waiting 4 Days (No Action)
+        </button>
+        <button class="scenario-btn" data-scenario="action_booking" type="button">
+          2. Action Needed: Book Pairing
+        </button>
+        <button class="scenario-btn" data-scenario="just_applied" type="button">
+          3. Just Applied (Receipt)
+        </button>
+        <button class="scenario-btn" data-scenario="final_stage" type="button">
+          4. Final Stage (Pre-Offer)
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Candidate Portal -->
+  <main class="container">
+    <!-- 1. Was my application received? (Verified Receipt Card) -->
+    <section class="hero-card">
+      <div class="candidate-meta">
+        <div class="receipt-tag">
+          <span>✓ Application Received &amp; Verified</span>
+        </div>
+        <h1 id="role-title" class="role-title">Frontend Engineer — Trading Platforms</h1>
+        <div class="role-sub">
+          <span>Candidate: <strong id="candidate-name">Alex Tan</strong></span>
+          <span class="dot-sep">•</span>
+          <span id="role-location">Cyberjaya, Malaysia (Hybrid)</span>
+          <span class="dot-sep">•</span>
+          <span id="role-pod">Multi-Asset Web Terminal Pod</span>
+        </div>
+      </div>
+
+      <div class="receipt-box">
+        <div class="receipt-row">
+          <span>Reference ID</span>
+          <span id="app-id" class="mono">DRV-2026-8841</span>
+        </div>
+        <div class="receipt-row">
+          <span>Submitted</span>
+          <span id="received-at" class="mono">Nov 10, 2026 · 14:22 MYT</span>
+        </div>
+        <div class="receipt-row">
+          <span>Elapsed</span>
+          <span id="days-elapsed">4 days ago</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Do I need to do anything right now? (Primary Action Banner) -->
+    <section id="action-banner" class="action-banner calm" aria-live="polite">
+      <div class="action-top">
+        <div class="action-heading-wrap">
+          <div id="action-icon" class="action-icon">✓</div>
+          <div>
+            <div id="action-eyebrow" class="action-eyebrow">
+              Candidate Action Status · No Action Required
+            </div>
+            <h2 id="action-title" class="action-title">
+              Sit tight — nothing is needed from you right now.
+            </h2>
+            <p id="action-desc" class="action-desc">
+              Your application was safely received and verified. You haven't missed any emails or calls — our engineering team is actively reviewing your profile.
+            </p>
+          </div>
+        </div>
+
+        <div class="eta-box">
+          <div id="eta-label" class="eta-label">Guaranteed Update By</div>
+          <div id="eta-value" class="eta-value mono">Tue, Nov 17 · 17:00 MYT</div>
+        </div>
+      </div>
+
+      <!-- Inline 1-Click Slot Picker (Shown when Candidate Action is Required) -->
+      <div id="slot-picker-container" class="slot-picker" style="display: none;">
+        <div id="slot-grid" class="slot-grid"></div>
+        <button id="confirm-slot-btn" class="btn-primary" type="button">
+          Confirm Selected Interview Slot →
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. What stage is my application at? (5-Stage Pipeline + Behind the Scenes) -->
+    <section class="card">
+      <div class="card-header">
+        <h2 class="card-title">Application Stage &amp; Timeline</h2>
+        <div class="sla-meter">
+          <span class="pulse-dot"></span>
+          <span id="sla-badge" class="mono">Day 4 of 5-Day SLA · On Track</span>
+        </div>
+      </div>
+
+      <div id="stepper" class="stepper"></div>
+
+      <div class="behind-scenes">
+        <div class="behind-title">
+          <span id="behind-title">Why have you waited 4 days? (Behind the scenes)</span>
+        </div>
+        <p id="behind-text" class="behind-text"></p>
+      </div>
+    </section>
+
+    <!-- 4. What is the next step? + Direct Human Contact -->
+    <section class="bottom-grid">
+      <!-- Next Step & Preparation -->
+      <div class="card">
+        <div class="card-header" style="margin-bottom: 0.9rem;">
+          <h2 class="card-title">What Happens Next</h2>
+        </div>
+
+        <div class="next-step-highlight">
+          <div id="next-step-title" class="next-step-title"></div>
+          <div id="next-step-meta" class="next-step-meta"></div>
+          <ul id="prep-list" class="prep-list"></ul>
+        </div>
+      </div>
+
+      <!-- Assigned Talent Partner & Alert Preferences -->
+      <div class="card">
+        <div class="card-header" style="margin-bottom: 0.9rem;">
+          <h2 class="card-title">Your Hiring Contact &amp; Alerts</h2>
+        </div>
+
+        <div class="recruiter-box">
+          <div id="recruiter-avatar" class="avatar">NR</div>
+          <div>
+            <div id="recruiter-name" class="recruiter-name">Nadia Rahman</div>
+            <div id="recruiter-role" class="recruiter-role">Senior Tech Talent Partner · Cyberjaya Hub</div>
+          </div>
+        </div>
+
+        <div class="notify-section">
+          <div class="notify-label">Instant Stage Change Notifications</div>
+          <div class="toggle-row">
+            <button class="channel-pill active" data-channel="email" type="button">
+              <span>Email</span> · <span class="ch-state">On</span>
+            </button>
+            <button class="channel-pill active" data-channel="whatsapp" type="button">
+              <span>WhatsApp</span> · <span class="ch-state">On</span>
+            </button>
+            <button class="channel-pill" data-channel="sms" type="button">
+              <span>SMS</span> · <span class="ch-state">Off</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="note-form" class="note-form">
+          <input
+            id="note-input"
+            class="note-input"
+            type="text"
+            placeholder="Share updated link or ask a quick question..."
+          />
+          <button class="btn-secondary" type="submit">Send</button>
+        </form>
+        <div id="toast-msg" class="toast" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Deriv TalentPulse · Built for DevFest 2026 GDGKL Vibing Lounge (Challenge 04)</span>
+    <span class="mono">Human-Reviewed · Transparent SLA</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
